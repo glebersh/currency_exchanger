@@ -1,7 +1,7 @@
 import { Box, Input, Spinner, Text } from "@chakra-ui/react";
 import { useAppSelector } from "../../hooks/useAppSelector";
 
-const ExhchangeResult = () => {
+const ExhchangeResult: React.FC = () => {
   const exchangeResult = useAppSelector(state => state.currencyReducer.currencyRate);
   const loadingStatus = useAppSelector(state => state.currencyReducer.loading);
   const errorStatus = useAppSelector(state => state.currencyReducer.error);
@@ -14,13 +14,22 @@ const ExhchangeResult = () => {
 
   return (
     <>
-      {loadingStatus && <Spinner />}
-      {errorStatus && <h1>Alert</h1>}
-      {!loadingStatus && !errorStatus &&
-        <Box>
-          <Text>Exchange rate for {exchangeResult?.symbol} on {unixTimeConverter(exchangeResult?.timestamp)} is: </Text>
-          <Input type='number' value={(exchangeResult?.amount).toFixed(2)} />
-        </Box>}
+      {
+        exchangeResult.amount !== 0 ?
+          <>
+            {loadingStatus && <Spinner />}
+
+            {errorStatus && <h1>Alert</h1>}
+
+            {
+              !loadingStatus && !errorStatus &&
+              <Box>
+                <Text>Exchange rate for {exchangeResult?.symbol} on {unixTimeConverter(exchangeResult?.timestamp)} is: </Text>
+                <Input type='number' value={(exchangeResult?.amount).toFixed(2)} />
+              </Box>
+            }
+          </> : null
+      }
     </>
   )
 };

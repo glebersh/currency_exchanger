@@ -1,5 +1,5 @@
 import { extendTheme } from '@chakra-ui/react';
-import { mode, Styles, GlobalStyleProps } from '@chakra-ui/theme-tools';
+import { mode, GlobalStyleProps } from '@chakra-ui/theme-tools';
 
 const breakpoints = {
   xs: "320px",
@@ -34,7 +34,7 @@ const theme = extendTheme({
       "900": "#16191D"
     },
     "primary": "#db295f",
-    "black": "#000000",
+    "black": "#2C333A",
     "pureWhite": "#FFFFFF",
     config: {
       initialColorMode: 'light',

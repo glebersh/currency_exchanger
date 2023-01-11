@@ -17,8 +17,9 @@ const Header: React.FC = () => {
           Currency</Text>
       </Flex>
       <Button
-        onClick={toggleColorMode}>{colorMode ===
-          'light' ? 'Dark' : 'Light'}</Button>
+        onClick={toggleColorMode}>
+        {colorMode === 'light' ? 'Dark' : 'Light'}
+      </Button>
     </Box>
   )
 };

@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import currencyReducer from '../store/slices/currenciesSlice';
+import quotesReducer from '../store/slices/quotesSlice';
 
 const store = configureStore({
   reducer: {
     currencyReducer,
+    quotesReducer,
   },
 });
 

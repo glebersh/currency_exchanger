@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { getExchangeRate } from '../../store/slices/currenciesSlice';
 
-const ExchangeForm = () => {
+const ExchangeForm: React.FC = () => {
   const [firstCurrency, setFirstCurrency] = useState('USD');
   const [secondCurrency, setSecondCurrency] = useState('JPN');
   const [amount, setAmount] = useState('');
@@ -27,9 +27,11 @@ const ExchangeForm = () => {
       <FormLabel mt='3em'>Choose currency 1:
         <Select w='200px' value={firstCurrency}
           onChange={(e) => (setFirstCurrency(e.target.value))}>
-          {currencyISOCodes.map(iso => <option
-            value={iso}>
-            {iso}</option>)}
+          {
+            currencyISOCodes.map(iso => <option
+              value={iso}>
+              {iso}</option>)
+          }
         </Select>
       </FormLabel>
 
@@ -47,7 +49,8 @@ const ExchangeForm = () => {
       </FormLabel>
 
       <Input type='submit' w='80%'
-        value='Calculate the exchange rate' />
+        value='Calculate the exchange rate'
+        disabled={firstCurrency === secondCurrency} />
     </form >
   )
 };

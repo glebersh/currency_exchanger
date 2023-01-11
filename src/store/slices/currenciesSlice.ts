@@ -71,6 +71,6 @@ const currenciesSlice = createSlice({
 
 export default currenciesSlice.reducer;
 
-function isError(action: AnyAction) {
+export function isError(action: AnyAction) {
   return action.type.endsWith('rejected');
 };
